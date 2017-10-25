@@ -134,7 +134,7 @@ class C4Light(Light):
             with async_timeout.timeout(self._timeout, loop=self.hass.loop):
                 request = yield from websession.get(url)
                 text = yield from request.text()
-        except (asyncio.TimeoutError, aiohttp.errors.ClientError):
+        except (asyncio.TimeoutError, aiohttp.ClientError):
             _LOGGER.exception("Error while fetch data.")
             return
         finally:
